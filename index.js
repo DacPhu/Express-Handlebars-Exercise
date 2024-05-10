@@ -38,4 +38,13 @@ app.use("/task3", require("./routes/task3Route"));
 app.use("/task4", require("./routes/task4Route"));
 app.get("/task4-details", (req, res) => res.render("task4-details"));
 
+app.use((req, res) => {
+  res.send("Request not found");
+});
+
+app.use((error, req, res, next) => {
+  console.error(error);
+  res.send("Server error");
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
